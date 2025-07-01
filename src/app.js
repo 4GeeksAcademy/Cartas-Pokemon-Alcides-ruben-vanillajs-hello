@@ -224,15 +224,15 @@ window.onload = function () {
   pokemones.forEach(unpokemon => {
     listPokemon.innerHTML += generarCard(unpokemon)
   });
-  const todostipo = pokemones.flat.map(tipos => tipos.tipo).filter((pokemon, indice, arr) => { arr.includes(pokemon) == indice });
+  // const todostipo = pokemones.flat.map(tipos => tipos.tipo).filter((pokemon, indice, arr) => { arr.includes(pokemon) == indice });
   //Pruevas//
 
-  const botones = document.querySelectorAll('filtrar');
+  const botones = document.querySelectorAll('.filtrar');
   botones.forEach(boton => {
     boton.addEventListener('click', () => {
-      const categoria = boton.getAttribute('.data-tipo');
-      const filtrados = productos.filter(tipefiltro =>
-        tipefiltro.categoria.includes(categoria)
+      const categoria = boton.getAttribute('data-tipo');
+      const filtrados =  categoria === "" ? pokemones : pokemones.filter(pokemon =>
+      pokemon.tipo.includes(categoria)
       );
       listPokemon.innerHTML = "";
       filtrados.forEach(tipo => {
